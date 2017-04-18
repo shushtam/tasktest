@@ -1,9 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\Note;
 
 class User extends Authenticatable
 {
@@ -15,9 +16,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'surname','age','phone','address','file','email', 'password',
     ];
-
+      public function notes()
+    {
+        return $this->hasMany('App\Models\Note');
+    }
     /**
      * The attributes that should be hidden for arrays.
      *
